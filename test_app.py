@@ -86,7 +86,9 @@ def scrape_shop():
     ])
         page = browser.new_page()
 
-        page.goto("https://www.tnpds.gov.in")
+        page.goto("https://www.tnpds.gov.in", wait_until="networkidle")
+
+        page.wait_for_selector("text=முதன்மை", timeout=60000)
 
         # click dropdown
         page.click("text=முதன்மை")
