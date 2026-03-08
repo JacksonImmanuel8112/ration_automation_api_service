@@ -85,8 +85,13 @@ def scrape_shop():
         "--disable-extensions"
     ])
         page = browser.new_page()
-
-        page.goto("https://www.tnpds.gov.in", wait_until="networkidle")
+        page.screenshot(path="debug.png")
+        print(page.title())
+        page.goto("https://www.tnpds.gov.in", wait_until="domcontentloaded")    
+        page.wait_for_timeout(5000)
+        
+        page.screenshot(path="debug.png")
+        print(page.title())
 
         page.wait_for_selector("text=முதன்மை", timeout=60000)
 
