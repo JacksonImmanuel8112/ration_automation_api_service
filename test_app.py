@@ -84,7 +84,12 @@ def scrape_shop():
         "--disable-gpu",
         "--disable-extensions"
     ])
-        page = browser.new_page()
+        page = browser.new_page(
+        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
+        )
+        page.set_extra_http_headers({
+        "Accept-Language": "en-US,en;q=0.9",
+        })
         page.screenshot(path="debug.png")
         print(page.title())
         page.goto("https://www.tnpds.gov.in", wait_until="domcontentloaded")    
